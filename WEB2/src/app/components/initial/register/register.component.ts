@@ -38,11 +38,12 @@ export class RegisterComponent implements OnInit {
   async save() {
     const valid = this.form.controls.email.status;
     const email = this.form.controls.email.value;
+    var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-      if(!valid || !email){
-        this.snackBar.open('email inválido','', {duration: 4000});
+    if(!valid || !email || !email.match(validEmailRegex)){
+      this.snackBar.open('email inválido','', {duration: 4000});
       return;
-      }
+    }
 
     if(this.form.controls.name.value === "" || !this.form.controls.name.value ){
       this.snackBar.open('nome inválido','', {duration: 4000});
