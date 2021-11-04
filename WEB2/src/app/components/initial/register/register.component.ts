@@ -28,6 +28,7 @@ export class RegisterComponent implements OnInit {
         email: [null, [Validators.required, Validators.email]],
         name: [null, [Validators.required]],
         password: [null, [Validators.required]],
+        passwordConfirm: [null, [Validators.required]],
         type: [null, [Validators.required]]
       });
     }
@@ -51,9 +52,13 @@ export class RegisterComponent implements OnInit {
     }
 
     const senha: string = this.form.controls.password.value;
+    const senha2: string = this.form.controls.passwordConfirm.value;
 
     if(this.form.controls.password.value === "" || !this.form.controls.password.value ){
       this.snackBar.open('senha inválida','', {duration: 4000});
+      return;
+    } else if(senha != senha2) {
+      this.snackBar.open('senha não confere','', {duration: 4000});
       return;
     } else if(senha.length < 8) {
       this.snackBar.open('senha requer no mínimo 8 caracteres','', {duration: 4000});

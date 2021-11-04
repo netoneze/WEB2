@@ -4,22 +4,26 @@
   <div fxLayout="column"
   fxLayoutAlign="center center"
   fxLayoutAlign.gt-sm="space-between center" >
-    <h3>EMAIL*</h3>
-    <input type="email" class="input" autofocus placeholder="email@email.com" formControlName="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email">
+    <input type="email" class="input" autofocus placeholder="email" formControlName="email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="email">
   </div>
 
   <div fxLayout="column"
   fxLayoutAlign="center center"
   class="register-container">
-    <h3>NOME*</h3>
     <input type="text" class="input" autofocus placeholder="nome" formControlName="name" >
   </div>
 
   <div fxLayout="column"
   fxLayoutAlign="center center"
   class="register-container">
-    <h3>SENHA*</h3>
-    <input type="password" class="input" autofocus placeholder="**********" formControlName="password">
+    <input type="password" class="input" autofocus placeholder="senha" formControlName="password" id="password">
+    
+  </div>
+
+  <div fxLayout="column"
+  fxLayoutAlign="center center"
+  class="register-container">
+    <input type="password" class="input" autofocus placeholder="confirmar senha" formControlName="passwordConfirm" id="passwordConfirm">
   </div>
 
   <div fxLayoutAlign="center center"
@@ -41,7 +45,7 @@
   </div>
 
   <div class="container-button cont-button">
-    <button class="button btn" routerLink="/">CANCELAR</button>
-    <button class="button" (click)="save()">CADASTRAR</button>
+    <button class="button" routerLink="/" id="cancelarReg">CANCELAR</button>
+    <button class="button" (click)="save()" id="cadastrarReg">CADASTRAR</button>
   </div>
 </div>

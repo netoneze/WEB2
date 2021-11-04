@@ -1,22 +1,23 @@
 <span class="legend">Equipe</span>
 
-<div class="main">
+<div style="display: flex; align-items: center; flex-direction: column; justify-content: space-between;">
 
     <h3>Equipe</h3>
-    <div class="cont">
-        <div class="container-block">
-            <markdown [data]="markdown"></markdown>
+    <div style="display: flex; align-items: center; flex-direction: column;">
+        <div class="container-block" style="margin: 10px">
+            <markdown [data]="markdown4" style="display: flex; flex-direction: column; align-items: center;"></markdown>
         </div>
-        <div class="container-block">
-            <markdown [data]="markdown2"></markdown>
+        <div class="container-block" style="margin: 10px">
+            <markdown [data]="markdown" style="display: flex; flex-direction: column; align-items: center;"></markdown>
         </div>
-        <div class="container-block">
-            <markdown [data]="markdown3"></markdown>
+        <div class="container-block" style="margin: 10px">
+            <markdown [data]="markdown2" style="display: flex; flex-direction: column; align-items: center;"></markdown>
+        </div>
+        <div class="container-block" style="margin: 10px">
+            <markdown [data]="markdown3" style="display: flex; flex-direction: column; align-items: center;"></markdown>
         </div>
     </div>
 
     <br />
-    <div class="container">
-        <markdown [data]="markdown4"></markdown>
-    </div>
+    
 </div>

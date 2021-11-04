@@ -2,27 +2,23 @@
 <div class="main-register">
 
   <div [formGroup]="form">
-    <div class="container-input">
-      <h3>Nome</h3>
-      <input class="input" formControlName="nomeContact">
+    <div class="container-input" style="margin: 20px 0;">
+      <input class="input" formControlName="nomeContact" placeholder="Nome">
     </div>
 
-    <div class="container-input">
-      <h3>Email</h3>
-      <input class="input" formControlName="emailContact">
+    <div class="container-input" style="margin: 20px 0;">
+      <input class="input" formControlName="emailContact" placeholder="Email">
     </div>
 
-    <div class="container-input">
-      <h3>Assunto</h3>
-      <input class="input" formControlName="subjectContact">
+    <div class="container-input" style="margin: 20px 0;">
+      <input class="input" formControlName="subjectContact" placeholder="Assunto">
     </div>
 
-    <div class="container-input">
-      <h3>Mensagem</h3>
-      <textarea class="input" formControlName="messageContact"></textarea>
+    <div class="container-input" style="margin: 20px 0;">
+      <textarea class="input" formControlName="messageContact" placeholder="Mensagem"></textarea>
     </div>
 
-    <div class="container-button">
+    <div class="container-button" style="margin: 20px 0; justify-content: space-between;">
       <button class="button btn">CANCELAR</button>
       <button class="button" (click)="register()">CADASTRAR</button>
     </div>

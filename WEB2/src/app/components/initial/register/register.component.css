@@ -1,11 +1,11 @@
 .register-container {
   margin-top: 20px;
-}
-
-.btn {
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .cont-button {
   margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }

@@ -3,17 +3,15 @@
 
   <div [formGroup]="form">
   <div class="container-input">
-    <h3>Codigo da turma</h3>
-    <input class="input" formControlName="codigo">
+    <input class="input" formControlName="codigo" placeholder="Codigo da turma">
   </div>
 
   <div class="container-input">
-    <h3>Descrição</h3>
-    <textarea class="input" formControlName="description"></textarea>
+    <textarea class="input" formControlName="description" placeholder="Descrição"></textarea>
   </div>
 
-  <div class="container-button">
-    <button class="button btn" >CANCELAR</button>
+  <div style="display: flex; justify-content: space-between;">
+    <button class="button" >CANCELAR</button>
     <button class="button" (click)="register()">CADASTRAR</button>
   </div>
 </div>

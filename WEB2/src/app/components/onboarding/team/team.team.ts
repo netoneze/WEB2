@@ -16,7 +16,7 @@ export const MARKDOWN_TEAMS3 = ` # Lucas Camacho
   ##
   Formação: Eng de Software - UTFPR
 `;
-export const MARKDOWN_TEAMS4 = ` # Contexto da Disciplina
+export const MARKDOWN_TEAMS4 = ` # Disciplina
 
 
   ##
