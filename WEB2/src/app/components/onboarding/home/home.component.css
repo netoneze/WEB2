@@ -8,17 +8,18 @@
 
 .content-button {
   margin-top: 20px;
+  margin-left: 10px;
   border-radius: 5px;
   background-color: #f27830;
   padding: 18px;
   display: flex;
   width: fit-content;
+  justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
 
 .main_home {
-  display: flex; 
+  display: flex;
   align-items: center;
 }
 

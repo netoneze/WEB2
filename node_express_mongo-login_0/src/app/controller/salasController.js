@@ -21,6 +21,18 @@ router.post('/register', async (req, res) => {
   }
 });
 
+router.get("/salas/aluno/:idAluno", async (req, res) => {
+  const idAluno = req.params.idAluno;
+
+  try {
+    const salas = await Sala.find({ idAluno });
+
+    res.json(salas);
+  } catch (err) {
+    res.status(500).send({ message: "nao deu certo" });
+  }
+});
+
 router.get("/salas/:idProfessor", async (req, res) => {
   const idProfessor = req.params.idProfessor;
 
@@ -66,6 +78,27 @@ router.patch('/update/:id', async (req, res) => {
   try {
     const updateSala = await Sala.updateOne({ _id: req.params.id },
       { $set: { isShow: req.body.isShow } });
+
+    res.json(updateSala);
+  } catch (err) {
+    res.json({ message: err });
+  }
+})
+
+
+router.patch('/update/code/:id', async (req, res) => {
+  const id = req.params.id;
+
+  if (!id) {
+    res.json({ message: "sem codigo" });
+  }
+  try {
+    const sala = await Sala.findById({_id: id});
+
+    sala.idAluno.push(req.body.idAluno);
+
+    const updateSala = await Sala.updateOne({ _id: id },
+      { $set: { idAluno: sala.idAluno } });
 
     res.json(updateSala);
   } catch (err) {

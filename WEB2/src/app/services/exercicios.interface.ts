@@ -10,7 +10,7 @@ export interface IUser {
   type: number;
   __v?: number;
   createdAt?: string;
-  codSala?: string;
+  codSala?: string[];
   qtdQuestoesCertas?: number;
   hasStarted: boolean;
   //1 - aluno, 2 = professor.

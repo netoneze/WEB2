@@ -31,4 +31,16 @@ import { ILogin } from "./interfaces/login.interface";
           return  this.user;
     }
 
+    getUserById(_id: string): Observable<Object>{
+      return  this.httpClientService.get('', _id);
+    }
+
+    updateUser(idUser: string, user: IUser):Observable<Object>
+    {
+      const stringify = JSON.stringify(user);
+      const userJSON = JSON.parse(stringify);
+
+      return this.httpClientService.patch('update', userJSON, idUser);
+    }
+
   }

@@ -1,3 +1,6 @@
+import { take } from 'rxjs/operators';
+import { RoomsService } from 'src/app/services/rooms.service';
+import { ISalaResposta } from './../../../services/Interfaces/sala.interface';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -16,13 +19,15 @@ export class RegisterComponent implements OnInit {
   form: FormGroup;
 
   user: IUser = {} as IUser;
-  teste: IUserRes= {} as IUserRes;
+  userRes: IUserRes= {} as IUserRes;
+  sala: ISalaResposta ={} as ISalaResposta;
   constructor(
     private requestService: RequestServiceService,
     private fb: FormBuilder,
     public snackBar: MatSnackBar,
     private router: Router,
     public dialog: MatDialog,
+    private roomsService: RoomsService,
     ) {
       this.form = this.fb.group({
         email: [null, [Validators.required, Validators.email]],
@@ -39,6 +44,8 @@ export class RegisterComponent implements OnInit {
   async save() {
     const valid = this.form.controls.email.status;
     const email = this.form.controls.email.value;
+    this.user.codSala = [];
+
     var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if(!valid || !email || !email.match(validEmailRegex)){
@@ -71,14 +78,14 @@ export class RegisterComponent implements OnInit {
     }
 
     if(this.form.controls.type.value == 1){
-     const codSala = await this.openDialog();
+    const codSala = await this.openDialog();
 
       if(!codSala) {
         this.snackBar.open('É necessário informar o código da sala','', {duration: 4000});
         return
       }
       else {
-        this.user.codSala = codSala;
+        this.user.codSala?.push(codSala);
       }
     }
 
@@ -88,15 +95,16 @@ export class RegisterComponent implements OnInit {
     this.user.type =  this.form.controls.type.value;
     this.user.hasStarted = false;
 
-   this.requestService.createUser(this.user).subscribe(res =>{
-      if(res) {
-        this.router.navigateByUrl('');
-        this.snackBar.open('Usuário cadastrado com sucesso','', {duration: 4000});
-       } else {
-        this.snackBar.open('erro ao cadastrar','', {duration: 4000});
+    this.userRes = await this.requestService.createUser(this.user).pipe(take(1)).toPromise() as IUserRes;
 
-       }
-   });
+    if(this.userRes){
+      if(this.userRes.user._id)
+
+      this.router.navigateByUrl('');
+      this.snackBar.open('Usuário cadastrado com sucesso','', {duration: 4000});
+    }else {
+        this.snackBar.open('erro ao cadastrar','', {duration: 4000});
+    }
   }
 
   async openDialog() {

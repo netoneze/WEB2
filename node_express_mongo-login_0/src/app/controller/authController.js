@@ -134,5 +134,35 @@ router.post('/reset_password', async (req, res) => {
     } catch (err) {
         res.status(400).send({ error: 'Não foi possível resetar a senha, tente novamente' });
     }
-})
+});
+
+router.patch('/update/:id' , async (req, res) => {
+    const _id =  req.params.id
+    
+    if(!_id){
+      res.json({message: "sem id"});
+    }
+  try {
+    const updateUser = await User.updateOne({_id: req.params.id}, 
+       {codSala: req.body.codSala});
+  
+      // console.log(util.inspect(updateUserQuestion));
+  
+      res.send(updateUser);
+  } catch (err) {
+    res.json({message: err});
+  }
+  });
+
+  router.get("/:id", async (req, res) => {
+    const _id = req.params.id;
+  
+    try{
+      const user = await User.findById({_id});
+  
+      res.json(user);
+    } catch(err){
+      res.status(500).send({message: "nao deu certo"});
+    }
+  });
 module.exports = app => app.use('/auth', router);

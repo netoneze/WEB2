@@ -1,3 +1,4 @@
+import { ISalaResposta } from './Interfaces/sala.interface';
 import { Observable } from 'rxjs';
 
 import { Injectable } from '@angular/core';
@@ -23,7 +24,7 @@ export class RoomsService {
 
      return  this.http.post(`register`, roomJson);
    }
-   
+
    registerContact( room: IContact): Observable<Object> {
     const stringify = JSON.stringify(room);
     const roomJson = JSON.parse(stringify);
@@ -36,8 +37,18 @@ export class RoomsService {
     return this.http.get(`salas/${id}`);
    }
 
-   getSalaByCodigo(codSala: string){
-    return this.http.get(`sala/${codSala}`);
+   getSalasByAlunoId(idAluno: string): Observable<Object> {
+    const stringify = JSON.stringify(idAluno);
+    const idJson = JSON.parse(stringify);
+
+    return this.http.get(`salas/aluno/${idJson}`);
+   }
+
+  getSalaByCodigo(codSala: string): Observable<Object>{
+    const stringify = JSON.stringify(codSala);
+    const codeJson = JSON.parse(stringify);
+
+    return this.http.get(`sala/${codeJson}`);
    }
 
    updateSala(isShow: boolean, id: string) {
@@ -47,5 +58,12 @@ export class RoomsService {
 
     return this.http.patch('update', isShowJson, id);
    }
+
+   updateSalaAlunosById(sala: ISalaResposta, idAluno: string) {
+   const stringify = JSON.stringify(idAluno);
+   const salaJson = JSON.parse(stringify);
+
+   return this.http.patch('update', salaJson, sala._id);
+  }
 
 }

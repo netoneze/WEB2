@@ -16,6 +16,7 @@ export class RequestServiceService {
     createUser(user: IUser):Observable<Object> {
     const stringUser = JSON.stringify(user);
     const teste = JSON.parse(stringUser);
+    console.log('user',teste);
 
     return this.webRequestService.post('register', teste);
    }

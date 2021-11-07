@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   //user: IUser = User_MOCK;
   user: IUser = {} as IUser;
   salas: ISalaRes[] = {} as ISalaRes[];
+  salaAluno: string[] = {} as string[];
 
   constructor(
     private requestService: RequestServiceService,
@@ -28,12 +29,22 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.user = this.authService.getUser();
-    if(this.user.type === 1 && this.user.codSala){
-       this.salas = await this.roomService.getSalaByCodigo(this.user.codSala).pipe(take(1)).toPromise() as ISalaRes[]
+
+    if(this.user.type ==2){
+      if(this.user._id){
+        this.salas = await this.roomService.getSalasByProfessorId(this.user?._id).pipe(take(1)).toPromise() as ISalaRes[];
+      }
+    } else {
+      if(this.user._id){
+        const user = await this.authService.getUserById(this.user._id).pipe(take(1)).toPromise() as IUser;
+
+        if(user.codSala)
+          this.salaAluno = user.codSala;
+
+          console.log(this.salaAluno)
+      }
     }
-    if(this.user.type === 2 && this.user._id){
-      this.salas = await this.roomService.getSalasByProfessorId(this.user?._id).pipe(take(1)).toPromise() as ISalaRes[];
-    }
+
   }
 
 }

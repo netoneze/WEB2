@@ -30,10 +30,10 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         select: false,
     },
-    codSala: {
+    codSala: [{
         type: String,
         required: false,
-    },
+    }],
     qtdQuestoesCertas:{
         type: Number,
         required: false
