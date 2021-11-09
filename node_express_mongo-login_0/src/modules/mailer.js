@@ -2,12 +2,31 @@ const nodemailer = require('nodemailer');
 const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 
-var transport = nodemailer.createTransport({
-  service: 'gmail',
+var transporter = nodemailer.createTransport({
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false,
+  requireTLS: true,
   auth: {
-    user: 'lucascamachowebUTFPR@gmail.com',
-    pass: '147258369web2'
-  }
+    user: 'JaineSaconiSecundario@gmail.com',
+    pass: '925ac3A7x'
+  },
+  tls: {
+    rejectUnauthorized: false
+}
 });
 
-module.exports = transport;
+let mailOptions = {
+  from: 'JaineSaconiSecundario@gmail.com',
+  to: 'jaine.saconi@gmail.com',
+  subject: 'Test',
+  text: 'Hello World!'
+};
+
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+      return console.log(error.message);
+  }
+  console.log('success');
+});
+module.exports = transporter;

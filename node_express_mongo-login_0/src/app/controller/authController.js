@@ -69,6 +69,9 @@ router.post('/authenticate', async (req, res) => {
      });
 });
 
+// Cria campo token no usuario
+//manda token por email e tbm salva no usuario
+// quando receber token do front verificar se token existe e permitir trocar senha.
 router.post('/forgot_password', async (req, res) => {
     const { email } = req.body;
     
@@ -92,15 +95,15 @@ router.post('/forgot_password', async (req, res) => {
 
         mailer.sendMail({
             to: email,
-            from: '719680b375-9693e4@inbox.mailtrap.io',
+            from: 'JaineSaconiSecundario@gmail.com',
             template: 'auth/forgot_password',
             context: { token },
         }, (err) => {
             if(err)
                 return res.status(400).send({ error: 'Não foi possível restaurar a senha' })
 
-            return res.send();
-        });
+            });
+            return res.send(token);
 
     } catch (err) {
         res.status(400).send({ error: 'Erro na recuperação de senha, tente novamente' });
@@ -116,7 +119,8 @@ router.post('/reset_password', async (req, res) => {
 
         if(!user)
             return res.status(400).send({ error: 'Usuário não encontrado' });
-            
+            console.log(user);
+
         if(token !== user.passwordResetToken)
             return res.status(400).send({ error: 'Token inválido' });
             

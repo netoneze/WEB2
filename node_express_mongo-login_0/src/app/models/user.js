@@ -24,11 +24,11 @@ const UserSchema = new mongoose.Schema({
     },
     passwordResetToken: {
         type: String,
-        select: false,
+        select: true,
     },
     passwordResetExpires: {
         type: Date,
-        select: false,
+        select: true,
     },
     codSala: [{
         type: String,
@@ -45,7 +45,7 @@ const UserSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-    },
+    }
 });
 
 UserSchema.pre('save', async function(next){
