@@ -17,8 +17,8 @@ export interface IUser {
 }
 
 export interface IUserRes {
- token: string;
- user: IUser;
+  token: string;
+  user: IUser;
 }
 
 export interface ISala {
@@ -41,24 +41,26 @@ export interface ISalaRes {
 }
 
 export interface IQuestion {
-    _id?: string;
-    _idQuestion?: string;
-    descriptionQuestion: string;
-    opt1: string;
-    opt2: string;
-    opt3: string;
-    opt4: string;
-    dificulty: number;
-    answer: string;
+  _id?: string;
+  _idQuestion?: string;
+  descriptionQuestion: string;
+  opt1: string;
+  opt2: string;
+  opt3: string;
+  opt4: string;
+  dificulty: number;
+  answer: string;
 }
 
 export interface IUserQuestion {
   userid: string;
-  questions: [{
-    qid: string;
-    answers: boolean[];
-    selected: string[];
-  }];
+  questions: [
+    {
+      qid: string;
+      answers: boolean[];
+      selected: string[];
+    }
+  ];
   _id: string;
 }
 
@@ -69,12 +71,12 @@ export interface IUserQuestionAnswers {
 }
 
 export interface IUserReport {
- questionDescription: string;
- errors: number;
- hits: number;
- question: IQuestion;
- respostas: string[];
- media: number;
+  questionDescription: string;
+  errors: number;
+  hits: number;
+  question: IQuestion;
+  respostas: string[];
+  media: number;
 }
 
 export interface IContact {
@@ -82,4 +84,10 @@ export interface IContact {
   emailContact: string;
   subjectContact: string;
   messageContact: string;
+}
+
+export interface IResetPassword {
+  email: string;
+  token: string;
+  newPassord: string;
 }
