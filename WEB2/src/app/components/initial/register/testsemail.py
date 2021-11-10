@@ -2,7 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+import warnings
 
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 driver = webdriver.Chrome()
 driver.get("http://localhost:4200/register")
@@ -25,7 +27,7 @@ def teste1():
     driver.find_element_by_id("flexRadioDefault2").click()
     cadastro.click()
     assert driver.current_url != "http://localhost:4200/"
-    print("\n\n\n\tTeste 1 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 1 realizado com sucesso - Campo vazio\n\n\n")
 
 "email invalido"
 def teste2():
@@ -40,7 +42,7 @@ def teste2():
     driver.find_element_by_id("flexRadioDefault2").click()
     cadastro.click()
     assert driver.current_url != "http://localhost:4200/"
-    print("\n\n\n\tTeste 2 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 2 realizado com sucesso - Campo inválido\n\n\n")
 
 "email ja cadastrado"
 def teste3():
@@ -55,7 +57,7 @@ def teste3():
     driver.find_element_by_id("flexRadioDefault2").click()
     cadastro.click()
     assert driver.current_url != "http://localhost:4200/"
-    print("\n\n\n\tTeste 3 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 3 realizado com sucesso - Campo já cadastrado\n\n\n")
 
 "email valido"
 def teste4():
@@ -71,7 +73,7 @@ def teste4():
     cadastro.click()
     time.sleep(3)
     assert driver.current_url == "http://localhost:4200/"
-    print("\n\n\n\tTeste 4 realizado com sucesso\n\n\n" + driver.current_url)
+    print("\n\n\n\tTeste 4 realizado com sucesso - Campo válido\n\n\n")
  
 teste1()
 teste2()

@@ -2,6 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import time
+import warnings
+
+warnings.filterwarnings("ignore", category=DeprecationWarning) 
 
 driver = webdriver.Chrome()
 driver.get("http://localhost:4200/register")
@@ -24,7 +27,7 @@ def teste1():
     driver.find_element_by_id("flexRadioDefault2").click()
     cadastro.click()
     assert driver.current_url != "http://localhost:4200/"
-    print("\n\n\n\tTeste 1 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 1 realizado com sucesso - Campo vazio\n\n\n")
 
 
 
@@ -41,7 +44,7 @@ def teste2():
     driver.find_element_by_id("flexRadioDefault2").click()
     cadastro.click()
     assert driver.current_url != "http://localhost:4200/"
-    print("\n\n\n\tTeste 2 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 2 realizado com sucesso - Campo confirmação diferente do campo original\n\n\n")
 
 "campo de confirmação igual"
 def teste3():
@@ -57,7 +60,7 @@ def teste3():
     cadastro.click()
     time.sleep(3)
     assert driver.current_url == "http://localhost:4200/"
-    print("\n\n\n\tTeste 3 realizado com sucesso\n\n\n")
+    print("\n\n\n\tTeste 3 realizado com sucesso - Campos iguais\n\n\n")
 
 teste1()
 teste2()
