@@ -38,8 +38,15 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {}
 
   async forgotPass() {
-    if (this.form.controls.email.value == '')
-      this.snackBar.open('email inválido', '', { duration: 4000 });
+    const valid = this.form.controls.email.status;
+    const email = this.form.controls.email.value;
+
+    var validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+    if(!valid || !email || !email.match(validEmailRegex)){
+      this.snackBar.open('email inválido','', {duration: 4000});
+      return;
+    }
 
     this.email.email = this.form.controls.email.value;
 
