@@ -158,8 +158,6 @@ router.patch("/update/:id", async (req, res) => {
       { codSala: req.body.codSala }
     );
 
-    // console.log(util.inspect(updateUserQuestion));
-
     res.send(updateUser);
   } catch (err) {
     res.json({ message: err });

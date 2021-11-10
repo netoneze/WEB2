@@ -10,10 +10,9 @@ import { MARKDOWN_HOME } from './teste';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-
   markdown = MARKDOWN_HOME;
   //user: IUser = User_MOCK;
   user: IUser = {} as IUser;
@@ -24,27 +23,27 @@ export class HomeComponent implements OnInit {
     private requestService: RequestServiceService,
     private roomService: RoomsService,
     private authService: AuthenticateService
-    ) {
-   }
+  ) {}
 
   async ngOnInit(): Promise<void> {
     this.user = this.authService.getUser();
 
-    if(this.user.type ==2){
-      if(this.user._id){
-        this.salas = await this.roomService.getSalasByProfessorId(this.user?._id).pipe(take(1)).toPromise() as ISalaRes[];
+    if (this.user.type == 2) {
+      if (this.user._id) {
+        this.salas = (await this.roomService
+          .getSalasByProfessorId(this.user?._id)
+          .pipe(take(1))
+          .toPromise()) as ISalaRes[];
       }
     } else {
-      if(this.user._id){
-        const user = await this.authService.getUserById(this.user._id).pipe(take(1)).toPromise() as IUser;
+      if (this.user._id) {
+        const user = (await this.authService
+          .getUserById(this.user._id)
+          .pipe(take(1))
+          .toPromise()) as IUser;
 
-        if(user.codSala)
-          this.salaAluno = user.codSala;
-
-          console.log(this.salaAluno)
+        if (user.codSala) this.salaAluno = user.codSala;
       }
     }
-
   }
-
 }
