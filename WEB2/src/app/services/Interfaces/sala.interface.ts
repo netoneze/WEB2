@@ -14,4 +14,5 @@ export interface ISalaResposta {
   description: string;
   idProfessor: string;
   __v: string;
+  isShow: boolean;
 }

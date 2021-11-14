@@ -6,6 +6,7 @@ import { RequestServiceService } from 'src/app/services/request-service.service'
 import { RoomsService } from 'src/app/services/rooms.service';
 import { User_MOCK } from 'src/app/teste/user-mock-teste';
 import { MARKDOWN_HOME } from './teste';
+import {ISalaResposta} from "../../../services/Interfaces/sala.interface";
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,9 @@ export class HomeComponent implements OnInit {
   user: IUser = {} as IUser;
   salas: ISalaRes[] = {} as ISalaRes[];
   salaAluno: string[] = {} as string[];
+  salaAlunoFiltrada: string[] = [] as string[];
+  salaAlunoArquivadas: string[] = [] as string[];
+  romRes: ISalaResposta[] = {} as ISalaResposta[];
 
   constructor(
     private requestService: RequestServiceService,
@@ -42,7 +46,22 @@ export class HomeComponent implements OnInit {
           .pipe(take(1))
           .toPromise()) as IUser;
 
-        if (user.codSala) this.salaAluno = user.codSala;
+        if (user.codSala) {
+          this.salaAluno = user.codSala;
+          for (let salaCod of user.codSala) {
+            this.romRes = (await this.roomService
+              .getSalaByCodigo(salaCod)
+              .pipe(take(1))
+              .toPromise()) as ISalaResposta[];
+            for (let salaDentro of this.romRes) {
+              salaDentro.isShow ?
+                this.salaAlunoFiltrada.push(salaDentro.codigo.toString())
+                :
+                this.salaAlunoArquivadas.push(salaDentro.codigo.toString())
+            }
+          }
+        }
+
       }
     }
   }

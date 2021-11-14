@@ -6,9 +6,12 @@
     </div>
 
 
-      <div  *ngIf="user.type == 1">
-        <div *ngFor="let cod of salaAluno" class="content-button">
+      <div  *ngIf="user.type == 1" style="margin-right: 10px">
+        <div *ngFor="let cod of salaAlunoFiltrada" class="content-button">
           <span class="text">{{cod}}</span>
+        </div>
+        <div *ngFor="let cod of salaAlunoArquivadas" class="content-button">
+          <span class="text" style="font-weight: bold">Sala {{cod}} Arquivada</span>
         </div>
       </div>
 
