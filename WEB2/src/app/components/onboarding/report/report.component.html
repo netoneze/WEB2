@@ -23,9 +23,13 @@
     <mat-form-field appearance="fill">
       <mat-label>Turmas</mat-label>
       <mat-select (selectionChange)="onChangeClassValue($event.value)">
-        <mat-option *ngFor="let sala of salas" [value]="sala">
-          {{sala.codigo}}
-        </mat-option>
+        <div *ngFor="let sala of salas">
+          <div *ngIf="sala.isShow">
+            <mat-option [value]="sala">
+              {{sala.codigo}}
+            </mat-option>
+          </div>
+        </div>
       </mat-select>
     </mat-form-field>
 
