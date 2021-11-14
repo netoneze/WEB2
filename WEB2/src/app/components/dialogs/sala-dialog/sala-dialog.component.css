@@ -1,7 +1,17 @@
 .btn {
-  padding: 5px;
-  margin-right: 5px;
-  margin-top: 5px;
+  padding: 10px;
+  font-size: 18px;
+  background-color: #f27830;
+  color: #ffffff;
+  border-radius: 5px;
+}
+
+.btn {
+  transition: 200ms background-color;
+}
+
+.btn:hover {
+  background-color: #c75c19;
 }
 
 .btn-container {

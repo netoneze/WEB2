@@ -80,6 +80,13 @@ a {
   font-weight: bold;
 }
 
+.button-white {
+  transition: 100ms color;
+}
+.button-white:hover {
+  color: black;
+}
+
 .legend {
   font-size: 11px;
   text-decoration: underline;
@@ -92,6 +99,7 @@ a {
   text-decoration: underline;
   color: #f27830;
   margin-top: 15px;
+  cursor: pointer;
 }
 
 .leg {

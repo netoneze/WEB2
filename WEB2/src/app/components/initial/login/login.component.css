@@ -6,6 +6,14 @@
   border-radius: 5px;
 }
 
+.btn {
+  transition: 200ms background-color;
+}
+
+.btn:hover {
+  background-color: #c75c19;
+}
+
 .content-button {
   display: flex;
   align-items: left;
