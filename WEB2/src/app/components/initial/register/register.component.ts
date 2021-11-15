@@ -95,7 +95,11 @@ export class RegisterComponent implements OnInit {
     this.user.type =  this.form.controls.type.value;
     this.user.hasStarted = false;
 
-    this.userRes = await this.requestService.createUser(this.user).pipe(take(1)).toPromise() as IUserRes;
+    try{
+      this.userRes = await this.requestService.createUser(this.user).pipe(take(1)).toPromise() as IUserRes;
+    } catch (err) {
+      this.snackBar.open(err.error.error.toString(),'', {duration: 4000});
+    }
 
     if(this.userRes){
       if(this.userRes.user._id)
