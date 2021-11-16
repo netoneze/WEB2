@@ -43,9 +43,6 @@ export class MenuBarComponent implements OnInit {
       const codSala = await this.openDialog();
 
       if (codSala) {
-        this.snackBar.open('Sala cadastrada com sucesso', '', {
-          duration: 4000,
-        });
         this.router.navigate(['']);
       }
     } else {

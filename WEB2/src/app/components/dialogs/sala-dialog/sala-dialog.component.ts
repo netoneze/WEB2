@@ -54,35 +54,36 @@ export class SalaDialogComponent {
           .getSalaByCodigo(this.form.controls.class.value)
           .pipe(take(1))
           .toPromise()) as ISalaResposta[];
-
-        if (this.romRes.length === 0) {
-          this.snackBar.open('Código de sala não registrado', '', {
-            duration: 4000,
-          });
-        } else {
-          if (this.data.user && this.data.user._id) {
-            const codSala = this.form.controls.class.value;
-            this.idAluno.idAluno = this.data.user._id;
-            this.data.user.codSala?.push(codSala);
-
-            this.user = (await this.authService
-              .updateUser(this.data.user._id, this.data.user)
-              .pipe(take(1))
-              .toPromise()) as IUser;
-
-            const res = await this.romService
-              .updateSalaAlunosById(codSala, this.idAluno)
-              .pipe(take(1))
-              .toPromise();
-
-            this.router.navigate(['']);
-          }
-        }
-      } catch (erro) {
-        console.log(erro);
+      } catch (err) {
+        this.snackBar.open(err.error.error.toString(), '', { duration: 4000 });
       }
 
-      this.data.sala = this.form.controls.class.value;
+      if (this.romRes.length > 0) {
+        if (this.data.user && this.data.user._id) {
+          const codSala = this.form.controls.class.value;
+          this.idAluno.idAluno = this.data.user._id;
+
+          this.data.user.codSala?.push(codSala);
+
+          this.user = (await this.authService
+            .updateUser(this.data.user._id, this.data.user)
+            .pipe(take(1))
+            .toPromise()) as IUser;
+
+          const res = (await this.romService
+            .updateSalaAlunosById(codSala, this.idAluno)
+            .pipe(take(1))
+            .toPromise()) as ISalaResposta;
+
+          this.snackBar.open('Sala cadastrada com sucesso', '', {
+            duration: 4000,
+          });
+          this.router.navigate(['']);
+        }
+      } else
+        this.snackBar.open('Código da sala inválido', '', { duration: 4000 });
     }
+
+    this.data.sala = this.form.controls.class.value;
   }
 }
