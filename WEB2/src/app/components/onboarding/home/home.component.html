@@ -1,4 +1,4 @@
-<span class="legend">HOME</span>
+<div  style="display: flex; justify-content: center;"><h3>Home</h3></div>
 <div class="main_home">
 
     <div class="container">
@@ -8,17 +8,17 @@
 
       <div  *ngIf="user.type == 1" style="margin-right: 10px">
         <div *ngFor="let cod of salaAlunoFiltrada" class="content-button">
-          <span class="text">{{cod}}</span>
+          <span class="text">Turma: {{cod}}</span>
         </div>
-        <div *ngFor="let cod of salaAlunoArquivadas" class="content-button">
-          <span class="text" style="font-weight: bold">Sala {{cod}} Arquivada</span>
+        <div *ngFor="let cod of salaAlunoArquivadas" class="content-button" id="arquivadas">
+          <span class="text" style="color: black">Turma: {{cod}} (Arquivada)</span>
         </div>
       </div>
 
       <div class="container-list" *ngIf="user.type == 2">
         <ul class="list-group" *ngFor="let sala of salas">
           <li class="list-group-item active" aria-current="true" *ngIf="sala.isShow">
-            <span> COD: {{sala.codigo}} </span>
+            <span> Turma: {{sala.codigo}} </span>
           </li>
         </ul>
 
