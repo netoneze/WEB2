@@ -59,6 +59,14 @@ export class SalaDialogComponent {
       }
 
       if (this.romRes.length > 0) {
+        for (let salaDentro of this.romRes) {
+          if(!salaDentro.isShow) {
+            this.snackBar.open('Sala arquivada', '', {
+              duration: 4000,
+            })
+            return;
+          }
+        }
         if (this.data.user && this.data.user._id) {
           const codSala = this.form.controls.class.value;
           this.idAluno.idAluno = this.data.user._id;
