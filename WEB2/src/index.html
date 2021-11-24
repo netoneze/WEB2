@@ -13,8 +13,42 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  <script>
+    function togglePassword() {
+      var pw_ele = document.getElementById("password");
+      var pw_icon = document.getElementById("tugow");
+      if (pw_ele.type === "password") {
+        pw_ele.type = "text";
+        pw_icon.classList.remove("fa-eye-slash");
+        pw_icon.classList.add("fa-eye");
+      } else {
+        pw_ele.type = "password";
+        pw_icon.classList.remove("fa-eye");
+        pw_icon.classList.add("fa-eye-slash");
+        pw_icon
+      }
+    }
+</script>
+<script>
+  function togglePasswordCad() {
+    var pw_ele = document.getElementById("passwordConfirm");
+    var pw_icon = document.getElementById("tugow1");
+    if (pw_ele.type === "password") {
+      pw_ele.type = "text";
+      pw_icon.classList.remove("fa-eye-slash");
+      pw_icon.classList.add("fa-eye");
+    } else {
+      pw_ele.type = "password";
+      pw_icon.classList.remove("fa-eye");
+      pw_icon.classList.add("fa-eye-slash");
+      pw_icon
+    }
+  }
+</script>
 </body>
 </html>

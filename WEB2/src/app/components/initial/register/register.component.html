@@ -17,13 +17,16 @@
   fxLayoutAlign="center center"
   class="register-container">
     <input type="password" class="input" autofocus placeholder="senha" formControlName="password" id="password">
-
+    <span class="fa fa-fw fa-eye-slash toggle-password" 
+    style="display: flex; align-self: end; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;" onclick="togglePassword()" id="tugow" ></span>
   </div>
 
   <div fxLayout="column"
   fxLayoutAlign="center center"
   class="register-container">
     <input type="password" class="input" autofocus placeholder="confirmar senha" formControlName="passwordConfirm" id="passwordConfirm">
+    <span class="fa fa-fw fa-eye-slash toggle-password" 
+    style="display: flex; align-self: end; margin-left: -25px; margin-top: -25px; position: relative; z-index: 2;" onclick="togglePasswordCad()" id="tugow1" ></span>
   </div>
 
   <div fxLayoutAlign="center center"

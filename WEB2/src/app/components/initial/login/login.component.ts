@@ -4,8 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { take } from 'rxjs/operators';
 import { AuthenticateService } from 'src/app/services/authenticate.service';
-import { ILogin } from 'src/app/services/Interfaces/login.interface';
-import { IResLogin } from 'src/app/services/Interfaces/res_login.interface';
+import { ILogin } from 'src/app/services/Interfaces/login.interfacep';
+import { IResLogin } from 'src/app/services/Interfaces/res_login.interfacep';
 
 @Component({
   selector: 'app-login',

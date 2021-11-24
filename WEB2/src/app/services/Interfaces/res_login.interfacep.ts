@@ -1,4 +1,4 @@
-import { IUser } from './../exercicios.interface';
+import { IUser } from '../exercicios.interface';
 
 export interface IResLogin {
   user: IUser;

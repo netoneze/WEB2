@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IUser, IResetPassword } from './exercicios.interface';
-import { ILogin } from './Interfaces/login.interface';
+import { ILogin } from './Interfaces/login.interfacep';
 import { HttpClientService } from './http-client.service';
 import { IEmail } from '../components/initial/forgot-password/forgot-password.component';
 
