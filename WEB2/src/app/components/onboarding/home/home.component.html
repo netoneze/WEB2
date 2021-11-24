@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="container-list" *ngIf="user.type == 2">
+      <div class="container-list" id="listTurmas" *ngIf="user.type == 2">
         <ul class="list-group" *ngFor="let sala of salas">
           <li class="list-group-item active" aria-current="true" *ngIf="sala.isShow">
             <span> Turma: {{sala.codigo}} </span>
